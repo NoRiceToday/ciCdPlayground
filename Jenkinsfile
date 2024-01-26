@@ -8,9 +8,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git checkout 'https://github.com/NoRiceToday/ciCdPlayground'
-                yarn
-                yarn build
+                step{
+                    git checkout 'https://github.com/NoRiceToday/ciCdPlayground'
+                    yarn
+                    yarn build
+                }
             }
         }
         stage('Test') {
