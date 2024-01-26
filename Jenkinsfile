@@ -6,24 +6,30 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/NoRiceToday/ciCdPlayground'
+            }
+        }
         stage('Build') {
             steps {
-                step{
-                    git checkout 'https://github.com/NoRiceToday/ciCdPlayground'
-                    yarn
-                    yarn build
-                }
+                sh 'yarn'
+                sh 'yarn build'
             }
         }
         stage('Test') {
             steps {
-                yarn test
-                yarn test:e2e
+                sh 'yarn test'
+                sh 'yarn test:e2e'
+            }
+        }
+        stage('Results') {
+            steps {
+                junit 'reports/*.xml'
             }
         }
         stage('Deploy') {
             steps {
-                junit 'reports/*.xml'
             }
         }
     }
