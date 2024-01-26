@@ -1,4 +1,4 @@
-name: 'cicdAction'
+name: 'buildTestAndPublish'
 on:
   push:
     branches:
