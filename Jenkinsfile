@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/jenkinsci/jenkins.git'
+                    url: 'https://github.com/NoRiceToday/ciCdPlayground'
             }
         }
         stage('Build') {
